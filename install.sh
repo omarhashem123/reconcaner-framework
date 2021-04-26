@@ -124,3 +124,5 @@ sudo mv ~/go/bin/jaeles /usr/bin/
 jaeles config init
 rm ~/.jaeles/base-signatures/fuzz/ -r -d
 cp fuzz/ ~/.jaeles/base-signatures/ -r
+#clickjacking
+mv clickjack webtool/ -r
