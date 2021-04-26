@@ -126,4 +126,4 @@ sudo mv ~/go/bin/jaeles /usr/bin/
 #jaeles signtures and then need to edit signtures
 jaeles config init
 rm ~/.jaeles/base-signatures/fuzz/ -r -d
-sudo mv ../fuzz/ ~/.jaeles/base-signatures/ -r
+sudo mv ../fuzz/ ~/.jaeles/base-signatures/
