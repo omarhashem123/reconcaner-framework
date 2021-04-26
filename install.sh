@@ -18,6 +18,9 @@ curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get update && sudo apt-get install yarn
 sudo apt-get install -y nodejs
 mkdir webtool
+#clickjacking
+mkdir webtool/clickjack
+mv clickjack.py webtool/clickjack/
 cd webtool
 #install wappalyzer
 mkdir technology
@@ -53,8 +56,9 @@ cd ..
 #subfinder
 GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 sudo mv ~/go/bin/subfinder /usr/bin/
+subfinder
 sudo rm ~/.config/subfinder/config.yaml
-sudo mv config.yaml ~/.config/subfinder/
+sudo mv ../config.yaml ~/.config/subfinder/
 #assetfinder
 go get -u github.com/tomnomnom/assetfinder
 sudo mv ~/go/bin/assetfinder /usr/bin/
@@ -69,7 +73,7 @@ cd ..
 #gitdorker you need to add github token here
 git clone https://github.com/obheda12/GitDorker.git
 pip install -r GitDorker/requirements.txt
-mv tokens GitDorker/
+mv ../tokens GitDorker/
 #naabu
 sudo apt install -y libpcap-dev
 GO111MODULE=on go get -v github.com/projectdiscovery/naabu/v2/cmd/naabu
@@ -107,16 +111,13 @@ go get -u github.com/tomnomnom/qsreplace
 sudo mv ~/go/bin/qsreplace /usr/bin/
 #nmap
 sudo apt-get update
-sudo apt install alien
-sudo alien nmap-7.91-1.x86_64.rpm
-sudo dpkg -i nmap_7.91-2_amd64.deb
-sudo rm nmap*
+sudo snap install nmap
 #nuclei
 GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
 sudo mv ~/go/bin/nuclei /usr/bin/
 #nuclei templates
 nuclei -update-templates
-cp top-xss-params-omar.yaml ~/nuclei-templates/vulnerabilities/generic/
+mv ../top-xss-params-omar.yaml ~/nuclei-templates/vulnerabilities/generic/
 #jaeles
 GO111MODULE=on go get github.com/jaeles-project/jaeles
 sudo mv ~/go/bin/jaeles /usr/bin/
@@ -124,6 +125,3 @@ sudo mv ~/go/bin/jaeles /usr/bin/
 jaeles config init
 rm ~/.jaeles/base-signatures/fuzz/ -r -d
 cp fuzz/ ~/.jaeles/base-signatures/ -r
-#clickjacking
-mkdir webtool/clickjack
-mv clickjack.py webtool/clickjack/ -r
