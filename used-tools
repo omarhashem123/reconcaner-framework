@@ -1,5 +1,3 @@
-#!/bin/bash
-
 knockpy --set apikey-virustotal=89d6092ffcd7b9638ee19601509c9ff7c4b05ce789fcb68124213c05f361377c
 wordlist in main dirctory of knockpy
 subfinder apikeys
@@ -12,22 +10,24 @@ tools:
 - assetfinder
 - httpx
 - dirsearch
-- wappalyzer##
+- wappalyzer
 - GitDorker
 - naabu
 - subover
 - gau
 - brutespray
-- nuclei & nuclei templates
-- jaeles & jaeles signtures 
+- nuclei 
+- nuclei templates
+- jaeles
+- jaeles signtures 
 - Gxss
 - dalfox
 - smuggler
-- clickjacking##
+- clickjacking
 - s3brute
-- gf & GF-Patterns
+- gf
+- GF-Patterns
 - nmap
 - subjs
 - qsreplace
 - linux commands[sed, sort, cat, mv, python3, wget, mkdir, ls]
-errors with fuzz cors
