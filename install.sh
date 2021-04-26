@@ -125,4 +125,5 @@ jaeles config init
 rm ~/.jaeles/base-signatures/fuzz/ -r -d
 cp fuzz/ ~/.jaeles/base-signatures/ -r
 #clickjacking
-mv clickjack webtool/ -r
+mkdir webtool/clickjack
+mv clickjack.py webtool/clickjack/ -r
