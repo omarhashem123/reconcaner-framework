@@ -1,0 +1,66 @@
+resolvers:
+  - 1.1.1.1
+  - 1.0.0.1
+  - 8.8.8.8
+  - 8.8.4.4
+  - 9.9.9.9
+  - 9.9.9.10
+  - 77.88.8.8
+  - 77.88.8.1
+  - 208.67.222.222
+  - 208.67.220.220
+sources:
+  - alienvault
+  - archiveis
+  - binaryedge
+  - bufferover
+  - censys
+  - certspotter
+  - certspotterold
+  - commoncrawl
+  - crtsh
+  - dnsdumpster
+  - dnsdb
+  - entrust
+  - github
+  - hackertarget
+  - ipv4info
+  - intelx
+  - passivetotal
+  - rapiddns
+  - securitytrails
+  - shodan
+  - sitedossier
+  - spyse
+  - sublist3r
+  - threatcrowd
+  - threatminer
+  - urlscan
+  - virustotal
+  - waybackarchive
+  - zoomeye
+binaryedge: 
+  - a880236b-c181-4e4a-808e-7e452467aa6f
+censys: 
+  - 0eaadacc-308f-4ae8-a91c-e6f161ba9558:gfdvX7vfB1rqLqoRDbeg2woBCw2lMiIc
+certspotter: []
+chaos: []
+dnsdb: []
+github: 
+  - ae5c361cb8ec1157dbec826b5db4f5d47877458b
+intelx: 
+  - ff1d9b4c-1be9-4631-88dc-c08fd3911522
+passivetotal: 
+  - elbrinsomar666@gmail.com:22a1fa298d3c67ce2c78db2f34799da49edd1066f08eb09113575ddb8e1a043d
+securitytrails: 
+  - 2VOiEYS8JvKLrpjk6aW3flVNswogujET
+shodan: 
+  - SqW6NFkMJDuF3Mc58v0jvcrhaEGz5s5H
+spyse: 
+  - 6b5da35a-f26b-42fc-be85-ff3bdc435efa
+urlscan: 
+  - 2100f401-25a9-4b62-90af-49de94f03533
+virustotal: 
+  - 89d6092ffcd7b9638ee19601509c9ff7c4b05ce789fcb68124213c05f361377c
+zoomeye: 
+  - f1213dbbd6df:0181565415omar

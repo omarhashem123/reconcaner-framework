@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#$1=scope $2=output folder
+cat $1 |grep '*'|sed 's/*.//gi' >> $2/without_filtering/domains
+#[+]---------------------- passive and active subdomain enumration -----------------------[+]
+echo "start passive enumration"
+cat $2/without_filtering/domains|assetfinder --subs-only|tee $2/without_filtering/assetfinder
+shuffledns -list $2/without_filtering/assetfinder -r webtool/massdns/lists/resolvers.txt -massdns webtool/massdns/bin/massdns -o $2/without_filtering/shuffledns-assetfinder
+subfinder -dL  $2/without_filtering/domains -o $2/without_filtering/subfinder
+shuffledns -list $2/without_filtering/subfinder -r webtool/massdns/lists/resolvers.txt -massdns webtool/massdns/bin/massdns -o $2/without_filtering/shuffledns-subfinder
+cat $2/without_filtering/shuffledns-subfinder >> $2/without_filtering/subs
+cat $2/without_filtering/shuffledns-assetfinder >> $2/without_filtering/subs
+python3 webtool/altdns/altdns/__main__.py -i $2/without_filtering/subs -o $2/without_filtering/data_output -w webtool/altdns/words.txt
+shuffledns -list $2/without_filtering/data_output -r webtool/massdns/lists/resolvers.txt -massdns webtool/massdns/bin/massdns -o $2/without_filtering/shuffledns-altdns
+cat shuffledns-altdns >> $2/without_filtering/subs
+mkdir $2/recon
+mkdir $2/recon/subdomains
+cp $2/without_filtering/subs $2/recon/subdomains/live_subdomains
