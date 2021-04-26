@@ -62,7 +62,7 @@ os.system("httpx -l " + args.o + "/recon/subdomains/live_subdomains -o " + args.
 #[+]----------------------------------------------------------------------------[+]
 # def function needed in next concurrent.futures
 def dirsearch(sub):
-    os.system("python3 webtool/dirsearch-master/dirsearch.py --full-url --random-agents -e 'php, asp, aspx, jsp, html, htm, js' -u " + sub)
+    os.system("python3 webtool/dirsearch/dirsearch.py --full-url --random-agent -e 'php, asp, aspx, jsp, html, htm, js' -u " + sub)
 
 def wappalyzer(sub):
     os.system("node webtool/technology/wappalyzer/src/drivers/npm/cli.js " + sub + " >> " + args.o + "/recon/technology/technologies.json")
@@ -83,7 +83,7 @@ def clickjacking(nothing):
     os.system("mkdir " + args.o + "/other/clickjacking")
     os.system("python3 webtool/clickjack/clickjack.py -t 10 -i " + args.o + "/recon/subdomains/httpx_subs -o " + args.o + "/other/clickjacking/clickjacking_subs")
 def smuggler(sub):
-    os.system("python3 webtool/smuggler-master/smuggler.py -u " + sub + " -x -t 15")
+    os.system("python3 webtool/smuggler/smuggler.py -u " + sub + " -x -t 15")
 def s3brute(sub):
     os.system("python webtool/s3brute/amazon-s3-enum.py -w webtool/s3brute/BucketNames.txt -d " + sub)
 def getjs(nothing):
@@ -133,10 +133,10 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=10) as e:
 for i in scope_wappalyzer:
     i = i.replace("://", "_")
     i = i.replace(".", "_")
-    x = subprocess.check_output("ls webtool/smuggler-master/payloads/", stderr=subprocess.STDOUT, shell=True)
+    x = subprocess.check_output("ls webtool/smuggler/payloads/", stderr=subprocess.STDOUT, shell=True)
     find = re.findall(i + "(.*)\\\\n", str(x))
     try:
-        os.system("mv webtool/smuggler-master/payloads/" + i + find[0] + " " + args.o + "/other/smuggler/")
+        os.system("mv webtool/smuggler/payloads/" + i + find[0] + " " + args.o + "/other/smuggler/")
     except:
         pass
 #dirsearch output
