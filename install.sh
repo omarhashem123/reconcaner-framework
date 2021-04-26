@@ -69,6 +69,8 @@ sudo mv ~/go/bin/httpx /usr/bin/
 git clone https://github.com/maurosoria/dirsearch.git
 cd dirsearch/
 pip install -r requirements.txt
+rm db/dicc.txt
+mv ../../dicc.txt db/
 cd ..
 #gitdorker you need to add github token here
 git clone https://github.com/obheda12/GitDorker.git
