@@ -56,7 +56,7 @@ cd ..
 #subfinder
 GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 mv ~/go/bin/subfinder /usr/bin/
-subfinder
+subfinder --help
 rm ~/.config/subfinder/config.yaml
 mv ../config.yaml ~/.config/subfinder/
 #assetfinder
