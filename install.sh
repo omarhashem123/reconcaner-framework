@@ -1,5 +1,6 @@
 #don't forget subfinder api and knock wordlist and massdns shuffledns wordlist and gitdorker github apis
 #install go
+sudo su
 sudo apt-get update
 wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
