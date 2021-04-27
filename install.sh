@@ -1,7 +1,7 @@
 #don't forget subfinder api and knock wordlist and massdns shuffledns wordlist and gitdorker github apis
 #install go
 sudo apt-get update
-wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+sudo wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 apt-get install build-essential
@@ -93,11 +93,13 @@ pip install -r brutespray/requirements.txt
 go get -u github.com/KathanP19/Gxss
 sudo mv ~/go/bin/Gxss /usr/bin/
 #gf
+sudo git clone https://github.com/tomnomnom/gf.git
 go get -u github.com/tomnomnom/gf
 sudo mv ~/go/bin/gf /usr/bin/
-cp -r gf/examples ~/.gf
+mkdir ~/.gf
+cp gf/examples/*.json ~/.gf/
 git clone https://github.com/1ndianl33t/Gf-Patterns.git
-cp -r Gf-Patterns/*.json ~/.gf
+cp Gf-Patterns/*.json ~/.gf
 #dalfox
 GO111MODULE=on go get -v github.com/hahwul/dalfox/v2
 sudo mv ~/go/bin/dalfox /usr/bin/
