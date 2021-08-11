@@ -117,7 +117,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=10) as e:
         scope_s3brute.add(i.strip())
 
     nothing = [1]
-    e.map(naabu, nothing)
+    #e.map(naabu, nothing)
     e.map(subover, nothing)
     e.map(dirsearch, scope_dirsearch)
     e.map(wappalyzer, scope_wappalyzer)
@@ -125,7 +125,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=10) as e:
     e.map(wayback, nothing)
     e.map(clickjacking, nothing)
     e.map(smuggler, scope_wappalyzer)
-    e.map(getjs, nothing)
+    #e.map(getjs, nothing)
     e.map(s3brute, scope_s3brute)
 #[+]----------------------------------------------------------------------------[+]
 #get output from dirsearch folder and from smuggler folder
@@ -174,8 +174,9 @@ def jaeles_scan(nothing):
 def jaeles_fuzz(nothing):
     #os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/cors/cors-bypass.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/cors -o " + args.o + "/jaeles/fuzz")
     os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/common/CRLF.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -o " + args.o + "/jaeles/fuzz")
-    os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/sqli/sql-error.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/sqli -o " + args.o + "/jaeles/fuzz")
-    os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/sqli/sql-error-path.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -o " + args.o + "/jaeles/fuzz")
+    os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/sqli/sqli-polyglot.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/sqli -o " + args.o + "/jaeles/fuzz")
+    os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/sqli/sqli-polyglot-path.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -o " + args.o + "/jaeles/fuzz")
+    os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/sqli/sqli-polyglot-param-bruteforce.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/subdomains/httpx_subs -o " + args.o + "/jaeles/fuzz")
     os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/lfi/lfi-path-01.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -o " + args.o + "/jaeles/fuzz")
     os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/lfi/lfi-param-base.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/path_traversal -o " + args.o + "/jaeles/fuzz")
     os.system("jaeles scan -c 100 -s ~/.jaeles/base-signatures/fuzz/ssti/template-injection.yaml -H 'Cookie: " + args.c + "' -U " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/ssti -o " + args.o + "/jaeles/fuzz")
@@ -241,7 +242,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=10) as e:
     # start brutespray
     nothing = [1]
     os.system("nuclei -ut")
-    e.map(brutespray, nothing)
+    #e.map(brutespray, nothing)
     e.map(nuclei_scan, nothing)
     e.map(jaeles_scan, nothing)
     e.map(jaeles_fuzz, nothing)
