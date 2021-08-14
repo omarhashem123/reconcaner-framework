@@ -193,6 +193,7 @@ def nuclei_fuzz(nothing):
     os.system("nuclei -t ~/nuclei-templates/vulnerabilities/generic/open-redirect.yaml -H 'Cookie: " + args.c + "' -l " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -bs 50 -o " + args.o + "/nuclei/fuzz/open-redirect")
     os.system("nuclei -t ~/nuclei-templates/nuclei-templates/fuzzing/adminer-panel-fuzz.yaml -H 'Cookie: " + args.c + "' -tags fuzz -l " + args.o + "/recon/subdomains/httpx_subs -bs 50 -o " + args.o + "/nuclei/fuzz/adminer-panel-fuzz")
     os.system("nuclei -t ~/nuclei-templates/vulnerabilities/generic/top-xss-params-omar.yaml -H 'Cookie: " + args.c + "' -l " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -bs 50 -o " + args.o + "/nuclei/fuzz/top-xss-params")
+    os.system("nuclei -t ~/nuclei-templates/vulnerabilities/generic/basic-xss-prober.yaml -H 'Cookie: " + args.c + "' -l " + args.o + "/recon/subdomains/httpx_subs -bs 50 -o " + args.o + "/nuclei/fuzz/basic-xss-prober")
     os.system("nuclei -t ~/nuclei-templates/headless/postmessage-tracker.yaml -headless -H 'Cookie: " + args.c + "' -tags headless -l " + args.o + "/recon/all_endpoints_and_gf/gf_parameters/parms_endpoints -bs 100 -o " + args.o + "/nuclei/fuzz/postmessage-tracker")
 
 def dalfox(nothing):
